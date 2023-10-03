@@ -1,10 +1,15 @@
 <script setup>
-const props = defineProps(['button', 'color'])
-const clickHandler = (event) => console.log('handler', eent)
+const props = defineProps(['button', 'color']);
+const emits = defineEmits(['handler']);
+
+const clickHandler = (event) => {
+    if (props.color) {emits ('handler', props.color)}
+    else { emits('handler', 'red');}
+};
 </script>
 
 <template>
-    <button @click="clickHandler" :class="purple">{{ props.button }}</button>
+    <button @click="clickHandler" :class="props.color">{{ props.button }}</button>
 </template>
 
 <style scoped>
@@ -14,16 +19,13 @@ button {
     background-color: white;
     font-size: 18px;
     color: black;
-    border-radius: 5px;
+    border-radius: 12px;
 }
 
 
 .purple {
-    padding: 6px 100px;
-    margin-top: 10px;
-    background-color: rgb(162, 0, 255);
-    font-size: 18px;
-    color: rgb(255, 255, 255);
-    border-radius: 5px;
+    background-color:blueviolet; 
+    color: white;
+    border-color: blueviolet;
 }
 </style>

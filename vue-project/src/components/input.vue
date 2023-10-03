@@ -1,11 +1,11 @@
 <script setup>
-const props = defineProps (['inputText', 'size'])
+const props = defineProps (['inputText'])
 </script>
 
 
 
 <template>
-    <input type="" :class="{short}"> {{ props.inputText }}
+    <input type="" > {{ props.inputText }}
 </template>
 
 <style scoped>
@@ -14,9 +14,6 @@ input{
     border-radius: 5px;
     background-color: white;
 }
-    .short{
-        padding: 10px 20px; 
-    }
     
 
 </style>

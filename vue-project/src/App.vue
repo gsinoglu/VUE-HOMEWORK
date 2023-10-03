@@ -2,9 +2,15 @@
 import ImageHeadComponent from "@/components/image/imageHead.vue"
 import ImageTextComponent from "@/components/image/imageText.vue"
 import ButtonComponent from "@/components/button.vue"
-import LabelComponent from "@/components/label.vue"
+import LabelComponent from "@/components/label.vue" 
 
-const parentHandler = () => console.log (Çalışıyor)
+
+const clickCancel = (color) => console.log('Cancel Function', color);
+const clickUpdate = () => console.log('Update Function');
+const clickSkip = () => console.log('Skip Function');
+const clickNext = () => console.log('Parent Handler');
+
+
 </script>
 
 <template>
@@ -46,8 +52,8 @@ const parentHandler = () => console.log (Çalışıyor)
 
 
     <div class="buttonPart">
-      <ButtonComponent button="Cancel"></ButtonComponent>
-      <ButtonComponent button="Update" ></ButtonComponent>
+      <ButtonComponent button="Cancel" @handler="clickCancel" color="Green"></ButtonComponent>
+      <ButtonComponent button="Update" color="purple" @handler="clickUpdate"></ButtonComponent>
     </div>
 
   </div>
@@ -55,7 +61,7 @@ const parentHandler = () => console.log (Çalışıyor)
   <div class="wrapped">
 
     <section>
-      <video src="src/components/video/video.mp4" controls='controls' ></video>
+      <video  src="src/components/video/video.mp4" controls='controls'></video>
       <ImageHeadComponent head='You video has been uploaded!'></ImageHeadComponent>
       <ImageTextComponent text='You are video has finished uploading and is live.'></ImageTextComponent>
     </section>
@@ -65,7 +71,7 @@ const parentHandler = () => console.log (Çalışıyor)
 
       <section>
         <LabelComponent text='Share link'></LabelComponent>
-        <input type="text" class="tall" value="https://www.youtube.com/watch?v=vmHoGicPQQQ">
+        <input type="text" class="tall" value="https://www.youtube.com/watch?v=uKgaVlMN7IY">
       </section>
 
       <section>
@@ -77,8 +83,8 @@ const parentHandler = () => console.log (Çalışıyor)
 
 
     <div class="buttonPart">
-      <ButtonComponent button="Skip" @handler="parentHandler"></ButtonComponent>
-      <ButtonComponent button="Next"  ></ButtonComponent>
+      <ButtonComponent button="Skip" @handler="clickSkip"></ButtonComponent>
+      <ButtonComponent button="Next" color="purple" @handler="clickNext"></ButtonComponent>
     </div>
 
   </div>
@@ -86,15 +92,15 @@ const parentHandler = () => console.log (Çalışıyor)
 
 <style scoped>
 img {
-  
+
   height: 325px;
   border-radius: 10px;
   box-shadow: 0 0px 1px 0px gray;
 }
 
 video {
- overflow: auto;
-  
+
+  height: 325px;
   border-radius: 10px;
   box-shadow: 0 0px 1px 0px gray;
 }
@@ -102,10 +108,11 @@ video {
 .wrapped {
   padding: 25px;
   width: 550px;
-  height: 100%;
+  
   background-color: white;
   border-radius: 10px;
   margin: 25px;
+  box-shadow: 0 0px 1px 0px rgb(0, 0, 0);
 }
 
 section {
@@ -118,7 +125,7 @@ section {
   display: flex;
   flex-direction: row;
   gap: 5px;
-  
+
   justify-content: space-between;
   align-items: flex-end;
 }
